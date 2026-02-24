@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empathy Engine</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+    <h1>🎙️ The Empathy Engine</h1>
+
+    <form action="/generate" method="post" autocomplete="off">
+        <textarea name="text" rows="4" cols="60"
+                  placeholder="Enter your text here..." required></textarea>
+        <br><br>
+        <button type="submit">Generate Speech</button>
+    </form>
+
+    {% if audio_file %}
+        <hr>
+        <h3>Detected Emotion: {{ emotion }}</h3>
+        <h4>Intensity Score: {{ intensity }}</h4>
+
+        <audio controls autoplay>
+            <source src="{{ audio_file }}" type="audio/wav">
+        </audio>
+    {% endif %}
+
+</body>
+</html>
